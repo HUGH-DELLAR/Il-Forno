@@ -5,10 +5,10 @@
 Сначала скачайте проект на компьютер и перейдите в папку проекта
 далее
 
-python -m venv env
-.\env\Scripts\activate
-pip install django
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+python -m venv env <br/>
+.\env\Scripts\activate<br/>
+pip install django<br/>
+python manage.py makemigrations<br/>
+python manage.py migrate<br/>
+python manage.py createsuperuser<br/>
+python manage.py runserver<br/>
