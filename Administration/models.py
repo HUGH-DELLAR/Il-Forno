@@ -24,6 +24,7 @@ class Dish(models.Model):
     ingredients = models.ManyToManyField(Ingredient)
     weight = models.IntegerField()
     price = models.IntegerField()
+    photo = models.ImageField(null=True)
     
     def __str__(self):
         return self.name
