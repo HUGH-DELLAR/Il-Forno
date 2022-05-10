@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <ul>
+    {% for dish in cart %}
+        <li>{{dish.name}}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
