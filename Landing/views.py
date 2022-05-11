@@ -11,13 +11,19 @@ def menu(request):
 
 def cart(request):
     cart = request.session['cart']
-    cart = [Dish.objects.get(pk=id) for id in cart]
-    return render(request, 'cart.html', {'cart': cart})
+    n_cart = [[Dish.objects.get(pk=int(i)), j] for i, j in cart.items()]
+    return render(request, 'cart.html', {'cart': n_cart})
 
 def add_product(request, id):
     session = request.session
     try:
-        session['cart'].append(id)
-    except:
-        session['cart'] = [id]
+        session['cart'][str(id)] += 1
+    except Exception as ex:
+        try:
+            session['cart'][str(id)] = 1
+        except Exception as ex:
+            session['cart'] = {str(id): 1}
+    finally:
+        request.session.modified = True
+    print(session['cart'])
     return HttpResponse('<script type="text/javascript">window.close()</script>')  

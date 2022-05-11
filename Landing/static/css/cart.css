@@ -42,3 +42,7 @@ body{margin-top:20px;}
 .font-weight-semibold {
     font-weight: 600 !important;
 }
+
+.product-card-title{
+    margin-left: 15px;
+}
