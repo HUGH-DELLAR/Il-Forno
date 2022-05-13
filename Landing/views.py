@@ -11,8 +11,10 @@ def menu(request):
 
 def cart(request):
     cart = request.session['cart']
-    n_cart = [[Dish.objects.get(pk=int(i)), j] for i, j in cart.items()]
-    return render(request, 'cart.html', {'cart': n_cart})
+    print(cart)
+    n_cart = [[Dish.objects.get(pk=int(id)), value] for id, value in cart.items()]
+    sum_total = sum([int(id.price * value) for id, value in n_cart])
+    return render(request, 'cart.html', {'cart': n_cart, 'sum_total': sum_total})
 
 def add_product(request, id):
     session = request.session
@@ -27,3 +29,10 @@ def add_product(request, id):
         request.session.modified = True
     print(session['cart'])
     return HttpResponse('<script type="text/javascript">window.close()</script>')  
+
+def remove_product(request, id):
+    session = request.session
+    del session['cart'][str(id)]
+    request.session.modified = True
+    print(session['cart'])
+    return HttpResponse('<script type="text/javascript">window.location.href = "/cart"</script>')
