@@ -42,9 +42,23 @@ class Category(models.Model):
 class Order(models.Model):
     order_date = models.DateTimeField()
     order_place = models.CharField(max_length=25)
-    executor = models.ForeignKey(User, on_delete=models.CASCADE)
+    executor = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     dishes = PickledObjectField()
-    order_statuc = models.IntegerField()
+    order_status = models.IntegerField()
+    
+    def get_dishes(self):
+        st = lambda x,y: f'{x}: {y}шт.'
+        return '\n'.join([str(st(x,y)+"\n") for x,y in self.dishes.items()])
+
+    def get_order_status(self):
+        if self.order_status == 0:
+            return 'Оформлен'
+        elif self.order_status == 1:
+            return 'В исполнении'
+        elif self.order_status == 2:
+            return 'Завершен'
+        else:
+            return 'Ошибка в оформлении заказа'
     
     def __str__(self):
         return f'{str(self.order_date)} - {self.pk}'

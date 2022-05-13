@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db.models import F
 
-from .models import Supplier, Ingredient, Dish, Category
+from .models import Supplier, Ingredient, Dish, Category, Order
 
 
 @admin.register(Supplier)
@@ -37,3 +37,7 @@ class CategoryAdmin(admin.ModelAdmin):
         return len(obj.dishes.all())
     
     get_dish.short_description = 'Dishes num'
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['order_date', 'order_place', 'executor', 'get_dishes', 'get_order_status']

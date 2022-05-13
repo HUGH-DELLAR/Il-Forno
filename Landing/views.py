@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from Administration.models import Category, Dish
+from Administration.models import Category, Dish, Order
+import datetime
 
 # Create your views here.
 def index(request):
@@ -36,3 +37,15 @@ def remove_product(request, id):
     request.session.modified = True
     print(session['cart'])
     return HttpResponse('<script type="text/javascript">window.location.href = "/cart"</script>')
+
+def new_order(request):
+    session = request.session
+    cart = session['cart']
+    order = Order(
+        order_date=datetime.datetime.now(),
+        order_place='Delivery',
+        dishes=cart,
+        order_status=0,
+    )
+    order.save()
+    return render(request, 'done.html', {'order_id': order.pk})
