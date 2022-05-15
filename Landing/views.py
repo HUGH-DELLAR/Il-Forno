@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from Administration.models import Category, Dish, Order
+from Administration.models import Category, Dish, Order, Ingredient
 import datetime
 
 # Create your views here.
