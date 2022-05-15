@@ -9,7 +9,7 @@ def index(request):
     session = request.session
     session['cart'] = {}
     request.session.modified = True
-    return render(request, 'index.html', {'chef': dish_obj})
+    return render(request, 'index.html', {'chef': dish_obj, 'nums':[i for i in range(1,10)]})
 
 def menu(request):
     print([i for i in Category.objects.all()])
