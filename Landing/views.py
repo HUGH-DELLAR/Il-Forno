@@ -4,7 +4,12 @@ import datetime
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    chef = ['Филе дорадо', 'Пицца Четыре сезона на ржаном тесте', 'Фасолевый суп с крупой фаро (пост)', 'Пицца Хенрико на ржаном тесте', 'Серый хлеб с гриссини и сливочным маслом', 'Фиш энд чипс', 'Лазанья Болоньезе', 'Цыпленок Пиканте с брокколи на гриле', 'Чизкейк с лесными ягодами', 'Пицца с морепродуктами на ржаном тесте', 'Пицца с лососем на ржаном тесте', 'Пицца Руккола с креветками на ржаном тесте']
+    dish_obj = [Dish.objects.get(name=i) for i in chef]
+    session = request.session
+    session['cart'] = {}
+    request.session.modified = True
+    return render(request, 'index.html', {'chef': dish_obj})
 
 def menu(request):
     print([i for i in Category.objects.all()])
