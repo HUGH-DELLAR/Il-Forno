@@ -19,6 +19,7 @@ class IngredientAdmin(admin.ModelAdmin):
     
     def diff(self, obj):
         return obj.diff
+    
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):

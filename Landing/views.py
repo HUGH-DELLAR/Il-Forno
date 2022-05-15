@@ -48,4 +48,12 @@ def new_order(request):
         order_status=0,
     )
     order.save()
+    for dish, amount in cart.items():
+        dish_obj = Dish.objects.get(pk=dish)
+        for _ in range(amount):
+            all_ings = dish_obj.ingredients.all()
+            av = dish_obj.weight / (len(all_ings))
+            for ing in all_ings:
+                ing.current_volume -= av
+                ing.save()
     return render(request, 'done.html', {'order_id': order.pk})
