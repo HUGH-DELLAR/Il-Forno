@@ -14,8 +14,10 @@ def index(request):
                                           'nums1_8':[i for i in range(1,9)]})
 
 def menu(request):
-    print([i for i in Category.objects.all()])
-    return render(request, 'menu.html', {'categories': Category.objects.all(), 'dishes': Dish.objects.all()})
+    print([i for i in Category.objects.all().order_by('display_priority')])
+    return render(request, 'menu.html', {'categories': Category.objects.all().order_by('display_priority'), 
+                                         'categories_r': Category.objects.all().order_by('-display_priority'),
+                                         'dishes': Dish.objects.all()})
 
 def cart(request):
     cart = request.session['cart']

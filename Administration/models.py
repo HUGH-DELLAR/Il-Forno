@@ -35,6 +35,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     dishes = models.ManyToManyField(Dish)
     last_time_changed = models.DateTimeField()
+    display_priority = models.IntegerField()
     
     def __str__(self):
         return self.name

@@ -82,24 +82,10 @@
             <!-- T453 -->
             <div id="nav440102812marker"></div>
             <div id="nav440102812" class="t453 " data-menu="yes" style="background-color: #111; " data-appearoffset="">
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440751028"
-                        style="color:#ffffff;" data-menu-item-number="9">Супы</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440747501"
-                        style="color:#ffffff;" data-menu-item-number="8">Пицца на ржанном тесте</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440745497"
-                        style="color:#ffffff;" data-menu-item-number="7">Мясо и рыба на гриле</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440744436"
-                        style="color:#ffffff;" data-menu-item-number="6">Домашние дессерты</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440738115"
-                        style="color:#ffffff;" data-menu-item-number="5">Домашнаяя паста и ризотто</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440736034"
-                        style="color:#ffffff;" data-menu-item-number="4">Горячие блюда из мяса и рыбы</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440733733"
-                        style="color:#ffffff;" data-menu-item-number="3">Детское меню</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440731270"
-                        style="color:#ffffff;" data-menu-item-number="2">Гарниры</a></div>
-                <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440729680"
-                        style="color:#ffffff;" data-menu-item-number="1">Брускетты фокачча хлеб</a></div>
+                {% for category in categories_r %}
+                    <div class="t453__item"><a class="t453__item_link t-menu__link-item" href="#rec440751028"
+                    style="color:#ffffff;" data-menu-item-number="9">{{category.name}}</a></div>
+                {% endfor %}
             </div>
             <script>$(document).ready(function () {
                     $('body').addClass('t453__body_menushowed');

@@ -32,7 +32,7 @@ class DishAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'get_dish', 'last_time_changed']
+    list_display = ['name', 'get_dish', 'last_time_changed', 'display_priority']
     
     def get_dish(self, obj):
         return len(obj.dishes.all())
