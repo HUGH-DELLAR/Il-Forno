@@ -249,10 +249,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                 <div class="t-container">
                     <div class="t-col t-col_8 t-prefix_2">
                         <div>
-                            <form id="form439632625" name='form439632625' role="form" action='' method='POST'
+                            <form id="form439632625" name='form439632625' role="form" action='/reservation/' method='POST'
                                 data-formactiontype="2" data-inputbox=".t-input-group"
                                 class="t-form js-form-proccess t-form_inputs-total_5 "
-                                data-success-callback="t678_onSuccess"> <input type="hidden" name="formservices[]"
+                                data-success-callback="t678_onSuccess"> {% csrf_token %}<input type="hidden" name="formservices[]"
                                     value="636ac8d91a812392487c0b16be050d60" class="js-formaction-services">
                                 <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;">
                                 </div>
@@ -260,7 +260,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                                     <div class="t-input-group t-input-group_nm" data-input-lid="1650821681924">
                                         <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no"
                                             field="li_title__1650821681924" style="">Ваше имя</div>
-                                        <div class="t-input-block"> <input type="text" autocomplete="name" name="Name"
+                                        <div class="t-input-block"> <input type="text" name='name' autocomplete="name" 
                                                 class="t-input js-tilda-rule " value="" data-tilda-req="1"
                                                 data-tilda-rule="name"
                                                 style="color:#000000; border:1px solid #000000; ">
@@ -270,7 +270,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                                     <div class="t-input-group t-input-group_ph" data-input-lid="1650821687437">
                                         <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no"
                                             field="li_title__1650821687437" style="">Ваш телефон</div>
-                                        <div class="t-input-block"> <input type="tel" autocomplete="tel" name="Phone"
+                                        <div class="t-input-block"> <input type="tel" name='phone' autocomplete="tel" 
                                                 class="t-input js-tilda-rule " value="" data-tilda-req="1"
                                                 data-tilda-rule="phone" pattern="[0-9]*"
                                                 style="color:#000000; border:1px solid #000000; ">
@@ -281,8 +281,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                                         <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no"
                                             field="li_title__1650821693185" style="">Кол-во гостей</div>
                                         <div class="t-input-block">
-                                            <div class="t-range__wrapper"> <input name="Кол-во гостей"
-                                                    class="t-range js-tilda-rule" type="range" min="1" max="6" step="1">
+                                            <div class="t-range__wrapper"> <input name="customer_num"
+                                                    class="t-range js-tilda-rule" type="range" name="customer_num" min="1" max="6" step="1">
                                                 <div class="t-range__value-txt t-descr t-descr_xxs"
                                                     style="display: none;"></div>
                                                 <div class="t-range__interval-txt-wrapper">
@@ -312,7 +312,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                                         <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no"
                                             field="li_title__1650821867142" style="">Дата брони</div>
                                         <div class="t-input-block">
-                                            <div class="t-datepicker__wrapper"> <input type="text" name="Дата брони"
+                                            <div class="t-datepicker__wrapper"> <input type="text" name='reservation_date'
                                                     class="t-input t-datepicker js-tilda-rule js-tilda-mask " value=""
                                                     data-tilda-req="1" data-tilda-rule="date"
                                                     data-tilda-dateformat="DD-MM-YYYY" data-tilda-datediv="dash"
@@ -342,8 +342,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', en
                                     <div class="t-input-group t-input-group_tm" data-input-lid="1650821873992">
                                         <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no"
                                             field="li_title__1650821873992" style="">Приблизительное время брони</div>
-                                        <div class="t-input-block"> <input type="text"
-                                                name="Приблизительное время брони"
+                                        <div class="t-input-block"> <input type="text" name="reservation_time"
                                                 class="t-input t-inputtime js-tilda-rule js-tilda-mask " value=""
                                                 data-tilda-req="1" data-tilda-rule="time" data-tilda-mask="99:99"
                                                 style="color:#000000; border:1px solid #000000; ">

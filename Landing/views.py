@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from Administration.models import Category, Dish, Order, Ingredient
 import datetime
+from .forms import ReservationForm
+from .models import Reservation
 
 # Create your views here.
 def index(request):
@@ -66,3 +68,16 @@ def new_order(request):
                 ing.current_volume -= av
                 ing.save()
     return render(request, 'done.html', {'order_id': order.pk})
+
+def reservation(request):
+    form = ReservationForm(request.POST)
+    print(form)
+    print(form.cleaned_data)
+    data = form.cleaned_data
+    reserv_obj = Reservation(name=data['name'],
+                             phone=data['phone'],
+                             customer_num=data['customer_num'],
+                             reservation_date=data['reservation_date'],
+                             reservation_time=data['reservation_time'])
+    reserv_obj.save()
+    return HttpResponse('<script type="text/javascript">window.location.href = "/"</script>')
